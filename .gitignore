@@ -1,0 +1,10 @@
+pom.xml
+*jar
+/lib/
+/classes/
+.lein-deps-sum
+.cake
+*.war
+.rvmrc
+target/
+tmp/
