@@ -9,14 +9,13 @@
   (json/read-json
    (:body (http-client/get (str "https://api.twitter.com/1/favorites/" handle ".json")))))
 
-(defn get-favorites-str [handle]
-  (reduce #(str %1 "<br/>" %2)
-       (map :text (get-favorites handle)))) 
+(defn condense-tweets [full-tweets]
+  (map #(list (-> % :user :screen_name) (:text %)) full-tweets))
+
+(defn formatted-name-and-text-from-tweets [condensed-tweets]
+  (reduce #(conj % [:tr [:td (first %2)] [:td (second %2)]]) [:table] condensed-tweets))
 
 (defpage "/favorites/:id" {:keys [id]}
-         (common/layout
-           [:p "Welcome to vmware-hackathon-noir" [:br]  (get-favorites-str id)]))
-
-(defpage "/abc" []
   (common/layout
-   [:p "ABC!"]))
+   [:p (str "Here are " id "'s newest favorites!") [:br]
+    (formatted-name-and-text-from-tweets (condense-tweets (get-favorites id)))]))
