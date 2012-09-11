@@ -1,7 +1,7 @@
 ---
 applications:
-  .:
-    name: hackathon-noir
+  target/vmware-hackathon-noir-0.1.0-SNAPSHOT-standalone.war:
+    name: hackathon-noir2
     framework:
       name: java_web
       info:
@@ -11,3 +11,6 @@ applications:
     url: ${name}.${target-base}
     mem: 512M
     instances: 1
+    services:
+      redis-e857d:
+        type: redis
