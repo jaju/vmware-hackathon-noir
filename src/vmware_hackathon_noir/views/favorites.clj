@@ -1,4 +1,4 @@
-(ns vmware-hackathon-noir.views.welcome
+(ns vmware-hackathon-noir.views.favorites
   (:require [vmware-hackathon-noir.views.common :as common]
             [noir.content.getting-started]
             [clj-http.client :as http-client]
@@ -15,7 +15,7 @@
 
 (defpage "/favorites/:id" {:keys [id]}
          (common/layout
-           [:p "Welcome to vmware-hackathon-noir" (get-favorites-str id)]))
+           [:p "Welcome to vmware-hackathon-noir" [:br]  (get-favorites-str id)]))
 
 (defpage "/abc" []
   (common/layout
