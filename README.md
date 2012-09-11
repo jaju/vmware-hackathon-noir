@@ -4,11 +4,16 @@ A website written in noir.
 
 ## Usage
 
-If you use cake, substitute 'lein' with 'cake' below. Everything should work fine.
+Use leiningen2 - https://github.com/technomancy/leiningen
 
 ```bash
 lein deps
 lein run
+```
+
+To create a war, run the following (check the sample leiningen2 profiles.clj in the docs/ folder for default plugins to use - copy to ~/.lein/ or merge with existing.)
+```bash
+lein ring uberwar
 ```
 
 ## License
